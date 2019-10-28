@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Mortgage Rates</string>
+    <string name="calculate">Calculate</string>
+    <string name="total_value">Total Value</string>
+    <string name="down_payment">Down Payment</string>
+    <string name="loan_amount">Loan Amount</string>
+    <string name="interest_rate">Interest Rate</string>
 </resources>
