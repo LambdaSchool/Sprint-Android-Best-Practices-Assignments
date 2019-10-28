@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
             .filter { it.length > 1 }
         val obsDown = vTextDown.textChanges()
             .filter { it.length > 1 }
+        val obsRate = vTextInterestRate.textChanges()
+            .filter { it.length > 1 }
+        val obsTerm = vTextTerm.textChanges()
+            .filter { it.length > 1 }
 
         val obsValueAndDown = Observables.combineLatest(obsValue, obsDown) { x, y ->
 
@@ -45,6 +49,31 @@ class MainActivity : AppCompatActivity() {
                 obsValueAndDown.observeOn(AndroidSchedulers.mainThread()).subscribe { newValue ->
                     vTextNewValue.text = newValue
                 }
+        val interestRate = Observables.combineLatest(obsValueAndDown, obsRate, obsTerm){
+            obsValueAndDown, obsRate, obsTerm->
+            val rate = vTextNewValue.toString().toInt()
+            val term = obsTerm.toString().toInt()
+            val amount = obsValueAndDown.toInt()
+
+            val calculatedRate = (rate/100) / 12
+            val termInMonths = term / 12
+
+            val first = calculatedRate * (1 + calculatedRate).div(360)
+            val sec = (1+calculatedRate).div(amount) - 1
+            val calc = termInMonths * ( first / sec )
+
+            val format = calc.toString().split(".")
+            val print = format[0]
+
+
+
+            "$$print per month"
+        }
+        disposable = interestRate.observeOn(AndroidSchedulers.mainThread()).subscribe{
+            vTextCalculate.text = it
+        }
+
+
         }
     }
 
