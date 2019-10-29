@@ -6,4 +6,7 @@
     <string name="loan_amount">Loan Amount</string>
     <string name="interest_rate">Interest Rate</string>
     <string name="term">Term</string>
+    <string name="set_interest">set interest</string>
+    <string name="generate_new_temporary_interest_numbers">Generate New Temporary Interest Numbers</string>
+    <string name="calculate_amortized_mortgage_payment">Calculate Amortized Mortgage Payment:</string>
 </resources>

@@ -1,79 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
+
     <TextView
-        android:id="@+id/vTextCalculate"
+
+        android:id="@+id/txt_mortgage_payment"
+
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textAlignment="textEnd"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="30sp"
-        android:text="@string/calculate"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+
+        android:layout_height="wrap_content"
+
+        android:text="@string/calculate_amortized_mortgage_payment"
+
+        android:textSize="40sp"
+        android:textAlignment="center"
+
         app:layout_constraintLeft_toLeftOf="parent"
+
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.041"
-        android:gravity="end" />
+
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
+
         android:id="@+id/vTextValue"
-        android:inputType="number"
+
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="@string/total_value"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182" />
+
+        android:layout_height="wrap_content"
+
+        android:hint="Purchase Price"
+
+        android:inputType="numberDecimal"
+
+        android:textSize="20sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/txt_mortgage_payment" />
 
 
     <EditText
+
         android:id="@+id/vTextDown"
+
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="@string/down_payment"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.318" />
+
+        android:layout_height="wrap_content"
+
+        android:hint="Down Payment"
+
+        android:inputType="numberDecimal"
+
+        android:textSize="20sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/vTextValue" />
+
 
     <EditText
+
         android:id="@+id/vTextInterestRate"
+
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="@string/interest_rate"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.452" />
+
+        android:layout_height="wrap_content"
+
+        android:hint="Interest Rate Per Year"
+
+        android:inputType="numberDecimal"
+
+        android:textSize="20sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/vTextDown" />
+
 
     <EditText
+
         android:id="@+id/vTextTerm"
+
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="@string/term"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+
+        android:layout_height="wrap_content"
+
+        android:hint="Loan Length In Months"
+
+        android:inputType="numberDecimal"
+
+        android:textSize="20sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/vTextInterestRate" />
+
+
+    <TextView
+
+        android:id="@+id/vTextCalculate"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:textAlignment="center"
+
+        android:textSize="36sp"
+
         app:layout_constraintLeft_toLeftOf="parent"
+
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.588" />
+
+        app:layout_constraintTop_toBottomOf="@id/vTextTerm" />
+
+
+    <TextView
+
+        android:id="@+id/txt_set_interest"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:text="Set temporary interest:"
+
+        android:textSize="20sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/vTextCalculate" />
+
+
+    <Button
+
+        android:id="@+id/btn_1"
+        android:text="@string/set_interest"
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintRight_toLeftOf="@id/progress_bar"
+
+        app:layout_constraintTop_toBottomOf="@+id/txt_set_interest" />
+
+
+    <ProgressBar
+
+        android:id="@+id/progress_bar"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        app:layout_constraintLeft_toRightOf="@+id/btn_1"
+
+        app:layout_constraintRight_toLeftOf="@id/btn_2"
+
+        app:layout_constraintTop_toBottomOf="@+id/txt_set_interest" />
+
+
+    <Button
+
+        android:id="@+id/btn_2"
+android:text="@string/set_interest"
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+
+        app:layout_constraintLeft_toRightOf="@+id/progress_bar"
+
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/txt_set_interest" />
+
+
+    <Button
+
+        android:id="@+id/btn_generate"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:text="@string/generate_new_temporary_interest_numbers"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/btn_1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
