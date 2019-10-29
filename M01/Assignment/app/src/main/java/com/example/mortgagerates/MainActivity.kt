@@ -42,6 +42,9 @@ class MainActivity : AppCompatActivity() {
             setRetroDisposable()
 
         }
+        buttonAdd.setOnClickListener {
+            
+        }
 
 
     }
