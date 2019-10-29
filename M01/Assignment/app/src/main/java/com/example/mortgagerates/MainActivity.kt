@@ -8,7 +8,12 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.Observables
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,60 +25,61 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val obsValue = vTextValue.textChanges()
+
+        setBindingDisposable()
+
+
+    }
+
+    fun getAmortizedMortgagePayment(): Double {
+
+        val amount = vTextValue.text.toString()
+        val payment = vTextDown.text.toString()
+        val rate = vTextInterestRate.text.toString()
+        val period = vTextTerm.text.toString()
+        return if (amount.isEmpty() ||
+                    payment.isEmpty() ||
+                    rate.isEmpty() ||
+                    period.isEmpty()
+        ) {
+
+            0.0
+
+        } else {
+            val interestPerMonth = rate.toDouble()/12
+            val payPeriods = period.toInt()
+            val loanAmount = amount.toDouble() - payment.toDouble()
+
+            val top: Double = (1+interestPerMonth).pow(payPeriods)*interestPerMonth*loanAmount
+            val bot: Double = (1+interestPerMonth).pow(payPeriods)-1
+            top/bot
+        }
+    }
+
+    fun setBindingDisposable() {
+        val obsAmount = vTextValue.textChanges()
             .filter { it.length > 1 }
-        val obsDown = vTextDown.textChanges()
+        val obsPayment = vTextDown.textChanges()
             .filter { it.length > 1 }
         val obsRate = vTextInterestRate.textChanges()
             .filter { it.length > 1 }
-        val obsTerm = vTextTerm.textChanges()
+        val obsPeriod = vTextTerm.textChanges()
             .filter { it.length > 1 }
 
-        val obsValueAndDown = Observables.combineLatest(obsValue, obsDown) { x, y ->
-
-            val newValueX = x.toString().toInt()
-            val newValueY = y.toString().toInt()
-            val newValue = newValueX - newValueY
-            val calc = newValue
-
-            val format = newValue.toString().split(".")
-            val print = format[0]
-
-            "$$print"
-
+        val combined = Observables.combineLatest(
+            obsAmount, obsPayment,
+            obsRate, obsPeriod
+        ) { obsAmount, obsPayment, obsRate, obsPeriod ->
+            getAmortizedMortgagePayment()
         }
-            /*    disposable = combined.observeOn(AndroidSchedulers.mainThread()).subscribe {calc -> display.text = calc}*/
-            //disposable = obsValueAndDown.subscribe{
-            //   vTextNewValue.text = it
-            disposable =
-                obsValueAndDown.observeOn(AndroidSchedulers.mainThread()).subscribe { newValue ->
-                    vTextNewValue.text = newValue
-                }
-        val interestRate = Observables.combineLatest(obsValueAndDown, obsRate, obsTerm){
-            obsValueAndDown, obsRate, obsTerm->
-            val rate = vTextNewValue.toString().toInt()
-            val term = obsTerm.toString().toInt()
-            val amount = obsValueAndDown.toInt()
-
-            val calculatedRate = (rate/100) / 12
-            val termInMonths = term / 12
-
-            val first = calculatedRate * (1 + calculatedRate).div(360)
-            val sec = (1+calculatedRate).div(amount) - 1
-            val calc = termInMonths * ( first / sec )
-
-            val format = calc.toString().split(".")
-            val print = format[0]
-
-
-
-            "$$print per month"
-        }
-        disposable = interestRate.observeOn(AndroidSchedulers.mainThread()).subscribe{
-            vTextCalculate.text = it
-        }
-
+        disposable = combined.observeOn(AndroidSchedulers.mainThread()).subscribe{result ->
+            vTextCalculate.text = result.toString()
 
         }
     }
+}
+
+
+
+
 

@@ -5,4 +5,5 @@
     <string name="down_payment">Down Payment</string>
     <string name="loan_amount">Loan Amount</string>
     <string name="interest_rate">Interest Rate</string>
+    <string name="term">Term</string>
 </resources>
