@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
         }
         disposable = combined.observeOn(AndroidSchedulers.mainThread()).subscribe{result ->
             vTextCalculate.text = result.toString()
-
+            textView5.text = result.toString()
         }
     }
 
