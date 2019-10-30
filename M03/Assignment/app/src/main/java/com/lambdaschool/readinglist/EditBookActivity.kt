@@ -30,13 +30,32 @@ class EditBookActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        save_button.setOnClickListener { saveBook() }
+        save_button.setOnClickListener {
+
+            val bundle = Bundle()
+            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "1")
+            bundle.putString(FirebaseAnalytics.Param.QUANTITY, "3")
+            bundle.putString(FirebaseAnalytics.Param.CONTENT, "2")
+            FirebaseAnalytics.getInstance(this).logEvent("save_button_click", bundle)
+
+            saveBook()
+
+
+        }
         cancel_button.setOnClickListener { cancel() }
 
         val intent = intent
         id = intent.getStringExtra(Constants.NEW_BOOK_TAG)
         val bookCsv = intent.getStringExtra(Constants.EDIT_BOOK_TAG)
         if (bookCsv != null) {
+
+            val bundle = Bundle()
+            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Book")
+            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "1")
+            bundle.putString(FirebaseAnalytics.Param.QUANTITY, "3")
+            bundle.putString(FirebaseAnalytics.Param.CONTENT, "2")
+            FirebaseAnalytics.getInstance(this).logEvent("add_book_event", bundle)
+
             val book = Book(bookCsv)
             book_name_text.setText(book.title)
             book_reason_text.setText(book.reasonToRead)
@@ -46,6 +65,15 @@ class EditBookActivity : AppCompatActivity() {
     }
 
     private fun saveBook() {
+
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Book")
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "1")
+        bundle.putString(FirebaseAnalytics.Param.QUANTITY, "3")
+        bundle.putString(FirebaseAnalytics.Param.CONTENT, "2")
+        FirebaseAnalytics.getInstance(this).logEvent("save_book_event", bundle)
+
+
         val bookName = book_name_text.text.toString()
         if(bookName.isEmpty()){
             Toast.makeText(this, "Books require a title", Toast.LENGTH_SHORT).show()

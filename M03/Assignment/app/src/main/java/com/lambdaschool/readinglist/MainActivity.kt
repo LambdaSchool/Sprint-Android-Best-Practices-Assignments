@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         val bundle = Bundle()
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "1")
         bundle.putString(FirebaseAnalytics.Param.CONTENT, "2")
+
         FirebaseAnalytics.getInstance(this).logEvent("main_activity_view", bundle)
 
         context = this
