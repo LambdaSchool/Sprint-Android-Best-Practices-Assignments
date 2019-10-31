@@ -9,14 +9,11 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.Observables
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
-import java.util.concurrent.TimeUnit
 import kotlin.math.pow
 
 interface QuantumRandomApi{
@@ -75,11 +72,11 @@ class MainActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ randomNumbers ->
                 if (randomNumbers.data[0] > randomNumbers.data[1]) {
-                    tv_higher_mortgage_fixed_rate.setText(randomNumbers.data[0])
-                    tv_lower_mortgage_fixed_rate.setText(randomNumbers.data[1])
+                    tv_higher_mortgage_fixed_rate.setText("${randomNumbers.data[0]}")
+                    tv_lower_mortgage_fixed_rate.setText("${randomNumbers.data[1]}")
                 } else {
-                    tv_higher_mortgage_fixed_rate.setText(randomNumbers.data[1])
-                    tv_lower_mortgage_fixed_rate.setText(randomNumbers.data[0])
+                    tv_higher_mortgage_fixed_rate.setText("${randomNumbers.data[1]}")
+                    tv_lower_mortgage_fixed_rate.setText("${randomNumbers.data[0]}")
                 }
             }, {
                 tv_higher_mortgage_fixed_rate.setText("unknown")
