@@ -1,5 +1,11 @@
 package com.stepasha.neewsfeedinjector
 
+import com.stepasha.neewsfeedinjector.component.DaggerPresenterInjectorComponent
+import com.stepasha.neewsfeedinjector.component.PresenterInjectorComponent
+import com.stepasha.neewsfeedinjector.module.ContextModule
+import com.stepasha.neewsfeedinjector.module.NetworkModule
+import com.stepasha.neewsfeedinjector.ui.PostPresenter
+
 /**
  * Base presenter any presenter of the application must extend. It provides initial injections and
  * required methods.
@@ -12,6 +18,16 @@ abstract class BasePresenter<out V : BaseView>(protected val view: V) {
     init {
         inject()
     }
+    /**
+     * The inhector used to inject required dependencies
+     */
+    private val injector: PresenterInjectorComponent = DaggerPresenterInjectorComponent
+        .builder()
+        .baseView(view)
+        .contextModule(ContextModule)
+        .networkModule(NetworkModule)
+        .build()
+
 
     /**
      * This method may be called when the presenter view is created
@@ -27,6 +43,8 @@ abstract class BasePresenter<out V : BaseView>(protected val view: V) {
      * Injects the required dependencies
      */
     private fun inject() {
-        //TODO: Implement this method
+        when (this) {
+            is PostPresenter -> injector.inject(this)
+        }
     }
 }
