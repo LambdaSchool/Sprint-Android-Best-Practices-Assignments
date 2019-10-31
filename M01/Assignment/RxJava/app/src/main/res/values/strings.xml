@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RxJava</string>
+    <string name="higher_mortgage_fixed_rate">Higher mortgage fixed rate:</string>
+    <string name="lower_mortgage_fixed_rate">Lower mortgage fixed rate:</string>
+</resources>
