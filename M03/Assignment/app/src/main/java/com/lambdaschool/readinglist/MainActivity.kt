@@ -49,11 +49,11 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        val bundle3 = Bundle()
-        bundle3.putString(FirebaseAnalytics.Param.ITEM_ID, "1")
-        bundle3.putString(FirebaseAnalytics.Param.CONTENT, "2")
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "1")
+        bundle.putString(FirebaseAnalytics.Param.CONTENT, "2")
 
-        FirebaseAnalytics.getInstance(this).logEvent("on_resume_view", bundle3)
+        FirebaseAnalytics.getInstance(this).logEvent("main_activity_view", bundle)
         book_scroll_view.removeAllViews()
         book_scroll_view.addView(BooksController.getBooksView(context!!))
 
