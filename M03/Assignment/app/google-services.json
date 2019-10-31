@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "644147083751",
-    "firebase_url": "https://test-dfffa.firebaseio.com",
-    "project_id": "test-dfffa",
-    "storage_bucket": "test-dfffa.appspot.com"
+    "project_number": "138848506650",
+    "firebase_url": "https://bookread-b93cb.firebaseio.com",
+    "project_id": "bookread-b93cb",
+    "storage_bucket": "bookread-b93cb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:644147083751:android:33d046d67423f73d71e542",
+        "mobilesdk_app_id": "1:138848506650:android:b8333994dd1c45a2df52a3",
         "android_client_info": {
           "package_name": "com.lambdaschool.readinglist"
         }
       },
       "oauth_client": [
         {
-          "client_id": "644147083751-gcrldo05r7m0t759mddp5orja428fhee.apps.googleusercontent.com",
+          "client_id": "138848506650-tar69otk3usp32qjgl64mj6kridmiia0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lambdaschool.readinglist",
+            "certificate_hash": "47238bc069aacc5b9e293f7854ffa903271b9dc8"
+          }
+        },
+        {
+          "client_id": "138848506650-6uj32stadjtfljt67a36e37e85bj674h.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDcRCGJdm7wNhtuZ_qGfDUmJBadbgwm84s"
+          "current_key": "AIzaSyC9Lr6A0Iwi2Mh_uURH1zu9R6pWvG8F__g"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "644147083751-gcrldo05r7m0t759mddp5orja428fhee.apps.googleusercontent.com",
+              "client_id": "138848506650-6uj32stadjtfljt67a36e37e85bj674h.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

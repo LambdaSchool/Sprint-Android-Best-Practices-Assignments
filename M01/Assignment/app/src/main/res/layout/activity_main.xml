@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+
+    tools:context=".MainActivity">
+
+
+    <TextView
+
+        android:id="@+id/txt_mortgage_payment"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:text="@string/calculate_amortized_mortgage_payment"
+
+        android:textSize="40sp"
+        android:textAlignment="center"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+
+        android:id="@+id/vTextValue"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:hint="Purchase Price"
+
+        android:inputType="numberDecimal"
+
+        android:textSize="20sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/txt_mortgage_payment" />
+
+
+    <EditText
+
+        android:id="@+id/vTextDown"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:hint="Down Payment"
+
+        android:inputType="numberDecimal"
+
+        android:textSize="20sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/vTextValue" />
+
+
+    <EditText
+
+        android:id="@+id/vTextInterestRate"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:hint="Interest Rate Per Year"
+
+        android:inputType="numberDecimal"
+
+        android:textSize="20sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/vTextDown" />
+
+
+    <EditText
+
+        android:id="@+id/vTextTerm"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:hint="Loan Length In Months"
+
+        android:inputType="numberDecimal"
+
+        android:textSize="20sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/vTextInterestRate" />
+
+
+    <TextView
+
+        android:id="@+id/vTextCalculate"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:textAlignment="center"
+
+        android:textSize="36sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/vTextTerm" />
+
+
+    <TextView
+
+        android:id="@+id/txt_set_interest"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:text="Set temporary interest:"
+
+        android:textSize="20sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/vTextCalculate" />
+
+
+    <Button
+
+        android:id="@+id/btn_1"
+        android:text="@string/set_interest"
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintRight_toLeftOf="@id/progress_bar"
+
+        app:layout_constraintTop_toBottomOf="@+id/txt_set_interest" />
+
+
+    <ProgressBar
+
+        android:id="@+id/progress_bar"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        app:layout_constraintLeft_toRightOf="@+id/btn_1"
+
+        app:layout_constraintRight_toLeftOf="@id/btn_2"
+
+        app:layout_constraintTop_toBottomOf="@+id/txt_set_interest" />
+
+
+    <Button
+
+        android:id="@+id/btn_2"
+android:text="@string/set_interest"
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+
+        app:layout_constraintLeft_toRightOf="@+id/progress_bar"
+
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/txt_set_interest" />
+
+
+    <Button
+
+        android:id="@+id/btn_generate"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:text="@string/generate_new_temporary_interest_numbers"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/btn_1" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/btn_generate"
+        tools:layout_editor_absoluteX="33dp">
+
+        <TableLayout
+android:id="@+id/simpleTableLayout"
+            android:layout_width="399dp"
+            android:layout_height="181dp">
+
+            <TableRow
+                android:id="@+id/row1"
+                android:layout_width="200dp"
+                android:layout_height="41dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="83dp"
+                    android:layout_height="match_parent"
+                    android:text="Financed Ammount" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:text="Down Payment" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="101dp"
+                    android:layout_height="match_parent"
+                    android:text="Rate" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="124dp"
+                    android:layout_height="match_parent"
+                    android:text="Term" />
+            </TableRow>
+
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:id="@+id/row2">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+            </TableRow>
+
+
+        </TableLayout>
+
+    </LinearLayout>
+
+    <Button
+
+        android:id="@+id/buttonAdd"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:text="@string/add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
