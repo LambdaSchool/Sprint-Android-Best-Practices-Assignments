@@ -44,7 +44,9 @@ abstract class BasePresenter<out V : BaseView>(protected val view: V) {
      */
     private fun inject() {
         when (this) {
-            is PostPresenter -> injector.inject(this)
+            is PostPresenter -> {
+                injector.inject(this)
+            }
         }
     }
 }

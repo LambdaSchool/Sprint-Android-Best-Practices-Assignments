@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
  * @param P the type of the presenter the Activity is based on
  */
 abstract class BaseActivity<P : BasePresenter<BaseView>> : BaseView, AppCompatActivity() {
-    private lateinit var presenter: P
+    lateinit var presenter: P
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
